@@ -11,8 +11,8 @@ def has_cycle(graph: dict[str, list[str]]) -> bool:
                 elif recursion_stack.get(neighbor, False): # If the neighbor is in the recursion stack, we have a cycle
                     return True 
         recursion_stack[node] = False
-        return False
-    for vertex in graph:
-        if dfs(vertex):
+        return False # Backtrack: remove the node from the recursion stack before returning
+    for vertex in graph:# Check each vertex in the graph to ensure all components are covered
+        if dfs(vertex):# If a cycle is detected during the DFS, return True
             return True
     return False
